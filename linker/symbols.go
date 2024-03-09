@@ -426,13 +426,12 @@ func (s *Symbols) importResultWithExtensions(pkg *packageSymbols, r *result, han
 	})
 }
 
-func (s *Symbols) importResult(r *result, handler *reporter.Handler) error {
+func (s *Symbols) importResult(r *result, handler *reporter.Handler) (bool, error) {
 	pkg, err := s.importPackages(packageNameSpan(r), r.Package(), handler)
 	if err != nil || pkg == nil {
-		return err
+		return false, err
 	}
-	_, err = pkg.importResult(r, handler)
-	return err
+	return pkg.importResult(r, handler)
 }
 
 func (s *packageSymbols) importResult(r *result, handler *reporter.Handler) (bool, error) {

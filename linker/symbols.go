@@ -440,7 +440,7 @@ func (s *packageSymbols) importResult(r *result, handler *reporter.Handler) (boo
 
 	if _, ok := s.files[r]; ok {
 		// already imported
-		return false, nil
+		return true, nil
 	}
 
 	// first pass: check for conflicts

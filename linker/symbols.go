@@ -445,7 +445,7 @@ func (s *packageSymbols) importResult(r *result, handler *reporter.Handler) (boo
 
 	// first pass: check for conflicts
 	if err := s.checkResultLocked(r, handler); err != nil {
-		return false, err
+		return false, nil
 	}
 	if err := handler.Error(); err != nil {
 		return false, err

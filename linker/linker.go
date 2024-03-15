@@ -74,7 +74,7 @@ func Link(parsed parser.Result, dependencies Files, symbols *Symbols, handler *r
 	// references in next step.
 	ok, err := symbols.importResult(r, handler)
 	if !ok && err != nil {
-		return nil, err
+		return r, err
 	}
 
 	// After we've populated the pool, we can now try to resolve all type
